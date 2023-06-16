@@ -1,17 +1,4 @@
-<!doctype html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8' />
-    <title>Title</title>
-    <script defer='defer' src='/dnd-list/main.bundle.js'></script>
-    <link href='/dnd-list/main.css' rel='stylesheet'>
-</head>
-<body>
-<main>
-    <ul id='items' data-bind='template: { name: "personTmpl", foreach: items }'></ul>
-</main>
-<script id='personTmpl' type='text/html'>
-    <li
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><title>Title</title><script defer="defer" src="main.bundle.js"></script><link href="main.css" rel="stylesheet"></head><body><main><ul id="items" data-bind='template: { name: "personTmpl", foreach: items }'></ul></main><script id="personTmpl" type="text/html"><li
         class='draggable'
         data-bind='event:{
       dragstart:  function(data, event){
@@ -48,11 +35,11 @@
                         data-bind='
                     event:{
                             click:  function(data, event){
-                            return $root.toggleExpand($index());
+                                return $root.toggleExpand($index());
                             }
                           }'
                     >
-                        <div data-bind='if: !$root.expand()[$index()]'>
+                        <span data-bind='ifnot: expanded()'>
                             <svg
                                 width='8'
                                 height='5'
@@ -69,8 +56,8 @@
                                     fill='#0066FF'
                                 />
                             </svg>
-                        </div>
-                        <div data-bind='if: $root.expand()[$index()]'>
+                        </span>
+                        <span data-bind='if: expanded()'>
                             <svg
                                 width='8'
                                 height='6'
@@ -87,7 +74,7 @@
                                     fill='#0066FF'
                                 />
                             </svg>
-                        </div>
+                        </span>
                     </button>
                     <span class='title' data-bind='text:title'></span>
                     <div>
@@ -166,7 +153,7 @@
                 </div>
             </div>
         </div>
-        <div data-bind='if: $root.expand()[$index()]'>
+        <div data-bind='if: expanded'>
             <ul data-bind='foreach : children'>
                 <li
                     class='subitem draggable'
@@ -281,6 +268,4 @@
                 </li>
             </ul>
         </div>
-    </li></script>
-</body>
-</html>
+    </li></script></body></html>
